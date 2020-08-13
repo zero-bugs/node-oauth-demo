@@ -46,3 +46,8 @@ $ node index.js
 
 Visit http://localhost:8080 in your browser, and click the link to login GitHub.
 
+
+## 证书问题
+- 1、设置环境变量忽略证书：NODE_TLS_REJECT_UNAUTHORIZED=0
+- 2、制作证书导入参考：https://github.com/koichik/node-tunnel
+
