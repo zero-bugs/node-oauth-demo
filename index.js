@@ -25,7 +25,15 @@ const oauth = async ctx => {
       `code=${requestToken}`,
     headers: {
       accept: 'application/json'
-    }
+    },
+    httpsAgent: tunnel.httpsOverHttp({
+      proxy: {
+        host: "proxy.xxx.com",
+        port: 8080,
+        proxyAuth: 'username:password',
+      }
+    }),
+    proxy:false
   });
 
   const accessToken = tokenResponse.data.access_token;
@@ -37,7 +45,15 @@ const oauth = async ctx => {
     headers: {
       accept: 'application/json',
       Authorization: `token ${accessToken}`
-    }
+    },
+    httpsAgent: tunnel.httpsOverHttp({
+      proxy: {
+        host: "proxy.xxx.com",
+        port: 8080,
+        proxyAuth: 'username:password',
+      }
+    }),
+    proxy:false
   });
   console.log(result.data);
   const name = result.data.name;
